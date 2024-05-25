@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dm6341jkavrw8"]
+
+[ext_resource type="Texture2D" uid="uid://bhdhss2qniq7l" path="res://assets/cell.png" id="1_1ocbt"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_i125j"]
+[ext_resource type="PackedScene" uid="uid://vx62xigu6xmj" path="res://scenes/misc/pause_menu.tscn" id="2_nb85y"]
+[ext_resource type="Script" path="res://scripts/tile_map.gd" id="3_4q36k"]
+[ext_resource type="PackedScene" uid="uid://j2fw0jey2ud5" path="res://scenes/player.tscn" id="3_86flv"]
+[ext_resource type="PackedScene" uid="uid://cpkww0l6tyo7" path="res://scenes/enemy.tscn" id="5_5ukmg"]
+[ext_resource type="Script" path="res://scripts/screen_shake.gd" id="7_g1e6b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6r13r"]
+texture = ExtResource("1_1ocbt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_1 = true
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_etonf"]
+tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "timer"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "hazardous"
+custom_data_layer_1/type = 1
+sources/2 = SubResource("TileSetAtlasSource_6r13r")
+
+[node name="Level" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i125j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_etonf")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 131074, 0, 131073, 131074, 0, 196609, 131074, 0, 262145, 131074, 0, 327681, 131074, 0, 393217, 131074, 0, 458753, 131074, 0, 524289, 131074, 0, 65538, 131074, 0, 131074, 131074, 0, 196610, 131074, 0, 262146, 131074, 0, 327682, 131074, 0, 393218, 131074, 0, 458754, 131074, 0, 524290, 131074, 0, 65539, 131074, 0, 131075, 131074, 0, 196611, 65538, 0, 262147, 131074, 0, 393219, 131074, 0, 458755, 65538, 0, 524291, 131074, 0, 65540, 131074, 0, 131076, 65538, 0, 196612, 2, 0, 262148, 2, 0, 327684, 2, 0, 393220, 2, 0, 458756, 131074, 0, 524292, 131074, 0, 65541, 131074, 0, 131077, 131074, 0, 196613, 131074, 0, 262149, 131074, 0, 327685, 131074, 0, 393221, 131074, 0, 458757, 131074, 0, 524293, 131074, 0, 65542, 131074, 0, 131078, 131074, 0, 196614, 131074, 0, 262150, 131074, 0, 327686, 131074, 0, 393222, 131074, 0, 458758, 131074, 0, 524294, 131074, 0, 65543, 131074, 0, 131079, 131074, 0, 196615, 131074, 0, 262151, 131074, 0, 327687, 131074, 0, 393223, 131074, 0, 458759, 131074, 0, 524295, 65538, 0, 65544, 131074, 0, 131080, 65538, 0, 196616, 131074, 0, 262152, 131074, 0, 327688, 131074, 0, 393224, 131074, 0, 458760, 65538, 0, 524296, 65538, 0, 524297, 2, 0, 458761, 2, 0, 393225, 2, 0, 327689, 2, 0, 262153, 2, 0, 196617, 2, 0, 131081, 2, 0, 65545, 2, 0, 589825, 2, 0, 589826, 2, 0, 589827, 2, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 2, 0, 589832, 2, 0, 589833, 2, 0, 589824, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 8, 2, 0, 9, 2, 0, 327683, 131074, 0, 524288, 2, 0, 0, 2, 0, 65536, 2, 0, 131072, 2, 0, 196608, 2, 0, 262144, 2, 0, 327680, 2, 0, 393216, 2, 0, 458752, 2, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, 10, 2, 0, 65546, 2, 0, 131082, 2, 0, 196618, 2, 0, 262154, 2, 0, 327690, 2, 0, 393226, 2, 0, 458762, 2, 0, 524298, 2, 0, 589834, 2, 0, 655370, 2, 0, 655369, 2, 0, 655368, 2, 0, 655367, 2, 0, 655366, 2, 0, 655365, 2, 0, 655364, 2, 0, 655363, 2, 0, 655362, 2, 0, 655361, 2, 0, 655360, 2, 0, 720895, 2, 0, 655359, 2, 0, 589823, 2, 0, 524287, 2, 0, 458751, 2, 0, 393215, 2, 0, 327679, 2, 0, 262143, 2, 0, 196607, 2, 0, 131071, 2, 0, 65535, 2, 0)
+script = ExtResource("3_4q36k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_nb85y")]
+
+[node name="Player" parent="." instance=ExtResource("3_86flv")]
+position = Vector2(176, 176)
+
+[node name="Enemy" parent="." instance=ExtResource("5_5ukmg")]
+position = Vector2(81, 108)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 640
+script = ExtResource("7_g1e6b")

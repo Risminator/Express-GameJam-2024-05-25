@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://j2fw0jey2ud5"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_1ae74"]
+[ext_resource type="Texture2D" uid="uid://c5mideby8ubkh" path="res://assets/KingAllAnimations.png" id="1_5yrdn"]
+
+[node name="Player" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_1ae74")
+
+[node name="KingAllAnimations" type="Sprite2D" parent="."]
+texture = ExtResource("1_5yrdn")
+offset = Vector2(7.36, -8.425)
+hframes = 11
+vframes = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

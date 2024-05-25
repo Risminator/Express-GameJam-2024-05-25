@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dog4pjlq0gfts"]
+
+[ext_resource type="Script" path="res://scripts/smash_button.gd" id="1_5jpf4"]
+
+[node name="SmashButton" type="Button"]
+top_level = true
+z_as_relative = false
+texture_filter = 4
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_5jpf4")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
