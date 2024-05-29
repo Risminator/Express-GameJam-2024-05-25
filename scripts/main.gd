@@ -9,6 +9,7 @@ func _ready():
 
 func _on_btn_start_pressed():
 	Global.is_lost = false
+	Global.enemies_killed = 0
 	Global.set_scene(Global.SCENES.LEVEL)
 
 

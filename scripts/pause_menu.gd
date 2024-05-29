@@ -4,6 +4,7 @@ extends Control
 @onready var btn_resume: Button = $PanelContainer/VBoxContainer/BtnResume
 @onready var btn_restart: Button = $PanelContainer/VBoxContainer/BtnRestart
 @onready var btn_main: Button = $PanelContainer/VBoxContainer/BtnMain
+@onready var label_score: Label = $PanelContainer/VBoxContainer/LabelScore
 
 func _ready():
 	Events.game_lost.connect(_on_game_lost)
@@ -17,16 +18,18 @@ func resume():
 func restart():
 	resume()
 	Global.is_lost = false
+	Global.enemies_killed = 0
+	Level.restoring_shattered.clear()
 	get_tree().reload_current_scene()
 
 func pause():
 	get_tree().paused = true
 	activate_buttons()
-	print("A")
 	animation_player.play("blur")
 
 func testEsc():
 	if Input.is_action_just_pressed("Pause") and !get_tree().paused and !Global.is_lost:
+		label_score.visible = false
 		pause()
 	elif Input.is_action_just_pressed("Pause") and get_tree().paused and !Global.is_lost:
 		resume()
@@ -56,6 +59,10 @@ func _process(_delta):
 
 func _on_game_lost():
 	Global.is_lost = true
+	if Global.max_enemies_killed < Global.enemies_killed:
+		Global.max_enemies_killed = Global.enemies_killed
+	label_score.text = "Your Score: " + str(Global.enemies_killed) + "\nHigh Score: " + str(Global.max_enemies_killed)
 	btn_resume.disabled = true
 	btn_resume.visible = false
+	label_score.visible = true
 	pause()

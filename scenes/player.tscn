@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://j2fw0jey2ud5"]
+[gd_scene load_steps=5 format=3 uid="uid://j2fw0jey2ud5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1ae74"]
 [ext_resource type="Texture2D" uid="uid://c5mideby8ubkh" path="res://assets/KingAllAnimations.png" id="1_5yrdn"]
+
+[sub_resource type="Animation" id="Animation_cjblb"]
+resource_name = "idle"
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KingAllAnimations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4d2pv"]
+_data = {
+"idle": SubResource("Animation_cjblb")
+}
 
 [node name="Player" type="Node2D"]
 texture_filter = 1
@@ -12,5 +34,12 @@ texture = ExtResource("1_5yrdn")
 offset = Vector2(7.36, -8.425)
 hframes = 11
 vframes = 10
+frame = 87
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4d2pv")
+}
+autoplay = "idle"

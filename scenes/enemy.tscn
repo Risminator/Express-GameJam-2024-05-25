@@ -10,3 +10,4 @@ script = ExtResource("1_qhgqg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_witfc")
 offset = Vector2(0, -9.76)
+hframes = 2
